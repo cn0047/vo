@@ -26,10 +26,11 @@ class Partner extends ValueObject\ValueObject
 
 try {
     $partner = new Partner(['name' => 'Bond', 'email' => 'none']);
+
+    $partnerName = $partner->getName();
+    $partnerEmail = $partner->getEmail();
 } catch (ValueObject\Exception\ValidationException $e) {
     $errors = $e->getMessages();
 }
 
-$partnerName = $partner->getName();
-$partnerEmail = $partner->getEmail();
 ````
