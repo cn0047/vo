@@ -1,0 +1,23 @@
+{
+    "name": "kint/vo",
+    "type": "library",
+    "description": "ValueObject.",
+    "keywords": ["php", "ddd", "ValueObject", "Value Object", "VO"],
+    "homepage": "https://github.com/cn007b/vo",
+    "authors": [
+        {
+            "name": "Vladimir Kovpak",
+            "email": "cn007b@gmail.com",
+            "homepage": "http://cn007b.tumblr.com/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "symfony/validator": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "ValueObject\\": "src/ValueObject"
+        }
+    }
+}
