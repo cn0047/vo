@@ -9,13 +9,17 @@ Via composer: `composer require kint/vo`.
 
 ````php
 <?php
+
+use ValueObject\Exception\ValidationException;
+use ValueObject\ValueObject;
+
 /**
  * @method getName
  * @method getEmailAddress
  */
-class Partner extends ValueObject\ValueObject
+class Partner extends ValueObject
 {
-     protected function getRules():array
+     protected function getRules()
      {
         return [
             'name' => ['NotBlank', 'Length' => ['min' => 5]],
@@ -29,8 +33,10 @@ try {
 
     $partnerName = $partner->getName();
     $partnerEmail = $partner->getEmail();
-} catch (ValueObject\Exception\ValidationException $e) {
+} catch (ValidationException $e) {
     $errors = $e->getMessages();
 }
 
 ````
+
+List of all constraints available [here](http://symfony.com/doc/current/validation.html#basic-constraints).

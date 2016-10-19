@@ -1,6 +1,7 @@
 {
     "name": "kint/vo",
     "type": "library",
+    "license": "MIT",
     "description": "ValueObject.",
     "keywords": ["php", "ddd", "ValueObject", "Value Object", "VO"],
     "homepage": "https://github.com/cn007b/vo",
