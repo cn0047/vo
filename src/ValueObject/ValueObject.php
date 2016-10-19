@@ -2,6 +2,8 @@
 
 namespace ValueObject;
 
+use Symfony\Component\Validator\ConstraintViolation;
+use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\Validation;
 use ValueObject\Exception\ValidationException;
 
@@ -19,6 +21,7 @@ abstract class ValueObject
     public function __construct(array $params)
     {
         $this->validate($params);
+        $this->afterValidation($params);
 
         if (0 !== count($this->errors)) {
             throw new ValidationException($this->errors);
@@ -47,18 +50,45 @@ abstract class ValueObject
                 $constraints[] = new $constraintClassName($options);
             }
 
-            $violations = $validator->validate($params[$paramName], $constraints);
+            if (array_key_exists($paramName, $params)) {
 
-            if (0 !== count($violations)) {
-                $this->errors[$paramName] = $violations;
+                $violations = $validator->validate($params[$paramName], $constraints);
+
+                if (0 !== count($violations)) {
+                    $this->errors[$paramName] = $violations;
+                }
+
+            } else {
+
+                $this->setError($paramName, 'This parameter is required.');
+
             }
+
         }
     }
+
+    public function setError($paramName, $message)
+    {
+        $violation = new ConstraintViolation($message, '', [], '', $paramName, null);
+        if (array_key_exists($paramName, $this->errors)) {
+            $this->errors[$paramName]->add($violation);
+        } else {
+            $this->errors[$paramName] = new ConstraintViolationList([$violation]);
+        }
+    }
+
+    public function afterValidation(array $params)
+    {}
 
     public function __call(string $name, array $arguments )
     {
         $paramName = lcfirst(substr($name, 3));
 
         return $this->params[$paramName];
+    }
+
+    public function toArray()
+    {
+        return $this->params;
     }
 }
