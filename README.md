@@ -15,7 +15,7 @@ use ValueObject\ValueObject;
 
 /**
  * @method getName
- * @method getEmailAddress
+ * @method getEmail
  */
 class Partner extends ValueObject
 {

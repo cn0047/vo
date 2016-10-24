@@ -14,11 +14,13 @@
         }
     ],
     "require": {
-        "symfony/validator": "^3.1"
+        "symfony/validator": "^3.1",
+        "phpunit/phpunit": "^5.6"
     },
     "autoload": {
         "psr-4": {
-            "ValueObject\\": "src/ValueObject"
+            "ValueObject\\": "src/ValueObject",
+            "Test\\": "tests"
         }
     }
 }
