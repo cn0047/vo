@@ -80,7 +80,7 @@ abstract class ValueObject
     public function afterValidation(array $params)
     {}
 
-    public function __call(string $name, array $arguments )
+    public function __call($name, array $arguments )
     {
         $paramName = lcfirst(substr($name, 3));
 
