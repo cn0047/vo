@@ -34,7 +34,7 @@ class Partner extends ValueObject
 ````
 `getRules` - it is required method,
 which return validation rules for properties of your value object.
-This rules - symfony validators! So you have all power of symfony validation in your vo.
+This rules - Symfony validators! So you have all power of Symfony validation in your VO!
 List of all constraints available [here](http://symfony.com/doc/current/validation.html#basic-constraints).
 
 Somewhere in another class you can use your VO class in next way:
