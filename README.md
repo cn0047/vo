@@ -32,13 +32,20 @@ class Partner extends ValueObject
      }
 }
 ````
+`getRules` - it is required method,
+which return validation rules for properties of your value object.
+This rules - symfony validators! So you have all power of symfony validation in your vo.
+List of all constraints available [here](http://symfony.com/doc/current/validation.html#basic-constraints).
 
 Somewhere in another class you can use your VO class in next way:
 
 ````php
 <?php
 
+Namespace Domain\Model\SomeDomainModel;
+
 use VO\Partner;
+use ValueObject\Exception\ValidationException;
 
 try {
     $partner = new Partner(['name' => 'Bond', 'email' => 'error']);
@@ -53,7 +60,4 @@ try {
     $errors = $e->getMessages();
 
 }
-
 ````
-
-List of all constraints available [here](http://symfony.com/doc/current/validation.html#basic-constraints).
