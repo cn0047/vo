@@ -67,12 +67,20 @@ abstract class ValueObject
         }
     }
 
+    /**
+     * Sets error message for certain parameter.
+     *
+     * @param string $paramName Parameter name (key in array $parameters which is passed to __constructor method).
+     * @param string $message Custom error message.
+     */
     public function setError($paramName, $message)
     {
         $violation = new ConstraintViolation($message, '', [], '', $paramName, null);
         if (array_key_exists($paramName, $this->errors)) {
+            // Adds error message to ConstraintViolationList.
             $this->errors[$paramName]->add($violation);
         } else {
+            // Creates ConstraintViolationList and puts into it first error message.
             $this->errors[$paramName] = new ConstraintViolationList([$violation]);
         }
     }
