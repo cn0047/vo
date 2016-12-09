@@ -10,12 +10,26 @@ use ValueObject\Exception\ValidationException;
 
 abstract class ValueObject
 {
+    /**
+     * This array contains VO parameters values which is already validated.
+     *
+     * @var array $params Validated params, which are available through magic method getParameterNameInCamelCase.
+     */
     private $params = [];
 
+    /**
+     * This array contains validation errors.
+     *
+     * @var array $errors Validation errors.
+     */
     private $errors = [];
 
     /**
      * Returns validation rules.
+     *
+     * This rules describes REQUIRED parameters.
+     * Optional parameter must be resolved outside VO instance,
+     * so only in this way we can ensure that VO have all parameters and they all valid.
      *
      * @return array Array with validation rules.
      */
@@ -43,41 +57,57 @@ abstract class ValueObject
         }
     }
 
+    /**
+     * Most important method. Here performs all validation stuff.
+     *
+     * @param array $params Parameters being validated.
+     */
     final private function validate(array $params)
     {
+        // Initiate instance of Symfony validator.
         $validator = Validation::createValidator();
 
         /** @var array $rule */
         foreach ($this->getRules() as $paramName => $rule) {
 
+            // One validation rule can have lot of constraints (Symfony constraints).
+            // We must check them all,
+            // so that's why here we build array with appropriate constraints for particular validation rule.
+            // This array contains only constraints for only one validation rule,
+            // for only one parameter which must be validated.
             $constraints = [];
-
             foreach ($rule as $constraintName => $options) {
-
+                // Constraint can be specified in simple way, like 'NotBlank'.
+                // Or as array with parameters, like: 'Length' => ['min' => 5].
                 if (!is_array($options)) {
                     $constraintName = $options;
                     $options = [];
                 }
-
                 $constraintClassName = 'Symfony\Component\Validator\Constraints\\' . $constraintName;
                 $constraints[] = new $constraintClassName($options);
             }
 
+            // In the beginning of validation we must be sure that required parameter is passed to VO,
+            // otherwise it will be first validation error.
             if (isset($params[$paramName])) {
-
                 $value = $params[$paramName];
+                // Performs Symfony validation.
                 $violations = $validator->validate($value, $constraints);
-
                 if (0 === count($violations)) {
+                    // Parameter valid,
+                    // and only in this case we can store this parameter inside VO.
+                    // Thereby we ensure that our VO contains only valid parameters with only valid values.
                     $this->params[$paramName] = $value;
                 } else {
+                    // Parameter invalid,
+                    // so we can not store it inside VO,
+                    // we only can store error message about validation fail.
                     $this->errors[$paramName] = $violations;
                 }
-
             } else {
-
+                // We can not validate this parameter against validation rules,
+                // because this parameter was not passed to VO.
                 $this->setError($paramName, 'This parameter is required.');
-
             }
 
         }

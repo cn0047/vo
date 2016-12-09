@@ -19,12 +19,14 @@ class SimpleValueObjectTest extends TestCase
             'password' => ['This parameter is required.'],
             'confirmPassword' => ['This parameter is required.'],
         ];
+
         $actualErrors = [];
         try {
             new SimpleValueObject([]);
         } catch (ValidationException $e) {
             $actualErrors = $e->getMessages();
         }
+
         $this->assertSame($expectedErrors, $actualErrors);
     }
 
@@ -38,6 +40,7 @@ class SimpleValueObjectTest extends TestCase
             'password' => ['This parameter is required.'],
             'confirmPassword' => ['This parameter is required.'],
         ];
+
         $actualErrors = [];
         try {
             new SimpleValueObject([
@@ -47,6 +50,7 @@ class SimpleValueObjectTest extends TestCase
         } catch (ValidationException $e) {
             $actualErrors = $e->getMessages();
         }
+
         $this->assertSame($expectedErrors, $actualErrors);
     }
 
@@ -59,6 +63,7 @@ class SimpleValueObjectTest extends TestCase
             'password' => ['This parameter is required.'],
             'confirmPassword' => ['This parameter is required.'],
         ];
+
         $actualErrors = [];
         try {
             new SimpleValueObject([
@@ -68,6 +73,7 @@ class SimpleValueObjectTest extends TestCase
         } catch (ValidationException $e) {
             $actualErrors = $e->getMessages();
         }
+
         $this->assertSame($expectedErrors, $actualErrors);
     }
 
@@ -79,6 +85,7 @@ class SimpleValueObjectTest extends TestCase
         $expectedErrors = [
             'confirmPassword' => ['This value must be equal to password value.'],
         ];
+
         $actualErrors = [];
         try {
             new SimpleValueObject([
@@ -90,6 +97,7 @@ class SimpleValueObjectTest extends TestCase
         } catch (ValidationException $e) {
             $actualErrors = $e->getMessages();
         }
+
         $this->assertSame($expectedErrors, $actualErrors);
     }
 
@@ -104,6 +112,7 @@ class SimpleValueObjectTest extends TestCase
                 'This value must be equal to password value.',
             ],
         ];
+
         $actualErrors = [];
         try {
             new SimpleValueObject([
@@ -115,6 +124,7 @@ class SimpleValueObjectTest extends TestCase
         } catch (ValidationException $e) {
             $actualErrors = $e->getMessages();
         }
+
         $this->assertSame($expectedErrors, $actualErrors);
     }
     /**
@@ -126,6 +136,7 @@ class SimpleValueObjectTest extends TestCase
             'confirmPassword' =>
             'This value is too short. It should have 8 characters or more. This value must be equal to password value.',
         ];
+
         $actualErrors = [];
         try {
             new SimpleValueObject([
@@ -137,39 +148,7 @@ class SimpleValueObjectTest extends TestCase
         } catch (ValidationException $e) {
             $actualErrors = $e->getJoinedMessages();
         }
+
         $this->assertSame($expectedErrors, $actualErrors);
-    }
-
-    /**
-     * @test
-     */
-    public function allValidAndMagicMethodsWorksCorrect()
-    {
-        $params = [
-            'name' => 'James',
-            'email' => 'bond@mi6.com',
-            'password' => 'bond_pass_007',
-            'confirmPassword' => 'bond_pass_007',
-        ];
-        $vo = new SimpleValueObject($params);
-        $this->assertSame($vo->getName(), $params['name']);
-        $this->assertSame($vo->getEmail(), $params['email']);
-        $this->assertSame($vo->getPassword(), $params['password']);
-        $this->assertSame($vo->getConfirmPassword(), $params['confirmPassword']);
-    }
-
-    /**
-     * @test
-     */
-    public function allValidAndToArrayWorks()
-    {
-        $params = [
-            'name' => 'Silva',
-            'email' => 'silva@not-mi6.com',
-            'password' => 'silvas_secret_pass',
-            'confirmPassword' => 'silvas_secret_pass',
-        ];
-        $vo = new SimpleValueObject($params);
-        $this->assertSame($vo->toArray(), $params);
     }
 }
