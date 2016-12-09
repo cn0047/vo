@@ -14,7 +14,6 @@ Value object class:
 
 namespace VO;
 
-use ValueObject\Exception\ValidationException;
 use ValueObject\ValueObject;
 
 /**
@@ -48,6 +47,7 @@ use VO\Partner;
 use ValueObject\Exception\ValidationException;
 
 try {
+
     $partner = new Partner(['name' => 'Bond', 'email' => 'error']);
 
     // Now you can use magic methods and get values from your VO.
