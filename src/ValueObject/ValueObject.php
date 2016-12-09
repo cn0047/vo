@@ -77,14 +77,18 @@ abstract class ValueObject
             // for only one parameter which must be validated.
             $constraints = [];
             foreach ($rule as $constraintName => $options) {
-                // Constraint can be specified in simple way, like 'NotBlank'.
-                // Or as array with parameters, like: 'Length' => ['min' => 5].
+                $constraintOptions = $options;
+                // Constraint can be specified in simple way,
+                // like string which is constraint name (for example: `'NotBlank'` etc).
+                // Or as array with parameters, like:
+                // array kes - is constraint name
+                // and array value - constrain options (for example: `'Length' => ['min' => 5]`).
                 if (!is_array($options)) {
                     $constraintName = $options;
-                    $options = [];
+                    $constraintOptions = [];
                 }
                 $constraintClassName = 'Symfony\Component\Validator\Constraints\\' . $constraintName;
-                $constraints[] = new $constraintClassName($options);
+                $constraints[] = new $constraintClassName($constraintOptions);
             }
 
             // In the beginning of validation we must be sure that required parameter is passed to VO,
