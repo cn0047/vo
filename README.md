@@ -22,8 +22,8 @@ namespace VO;
 use ValueObject\ValueObject;
 
 /**
- * @method getName
- * @method getEmail
+ * @method string getName Gets name.
+ * @method string getEmail Gets email.
  */
 class Partner extends ValueObject
 {
