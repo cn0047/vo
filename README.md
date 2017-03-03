@@ -4,6 +4,7 @@ ValueObject
 [![Build Status](https://scrutinizer-ci.com/g/cn007b/vo/badges/build.png?b=master)](https://scrutinizer-ci.com/g/cn007b/vo/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cn007b/vo/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cn007b/vo/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/cn007b/vo/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/cn007b/vo/?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/085e3fe2470c42968f478d8041f3c176)](https://www.codacy.com/app/cn007b/vo?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cn007b/vo&amp;utm_campaign=Badge_Grade)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/f9ae75a5-f16a-4ce9-a194-8df1460ed4f7/mini.png)](https://insight.sensiolabs.com/projects/f9ae75a5-f16a-4ce9-a194-8df1460ed4f7)
 
 #### Install
