@@ -17,9 +17,9 @@ class ValidationException extends \Exception
     /**
      * This array contains validation errors (violations).
      *
-     * @var array $violations Validation errors (violations).
+     * @var array $violations Validation errors (violations). By default it's empty array.
      */
-    private $violations = [];
+    private $violations;
 
     /**
      * Constructor.
