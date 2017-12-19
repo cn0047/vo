@@ -2,7 +2,7 @@
     "name": "kint/vo",
     "type": "library",
     "license": "MIT",
-    "description": "🔋 ValueObject - Simple, yet powerful immutable value object. If you need to pass valid parameters into different application layers - use value object.",
+    "description": "Simple, yet powerful immutable Value Object.",
     "keywords": ["php", "ddd", "ValueObject", "Value Object", "VO"],
     "homepage": "https://github.com/cn007b/vo",
     "authors": [
