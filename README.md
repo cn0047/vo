@@ -55,7 +55,7 @@ $secretAgent = new VO\SecretAgent(['name' => 'Bond', 'email' => 'james.bond@mi6.
 // Now you can use magic methods and get values from your VO.
 $secretAgentName = $secretAgent->getName();
 $secretAgentEmail = $secretAgent->getEmail();
-// Also you can pass this VO as parameter
+// Also you can pass this VO as parameter.
 $controller->doSomethingWithSecretAgent($secretAgent);
 ````
 
@@ -103,5 +103,7 @@ class SecretAgentModel
     }
 }
 ````
+
+ENJOY! 🙂 
 
 Example with custom validation rules available [here](https://github.com/cn007b/vo/blob/master/tests/Unit/Stub/SimpleValueObject.php).
