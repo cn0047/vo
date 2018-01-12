@@ -32,7 +32,7 @@ use ValueObject\ValueObject;
  * @method string getName Gets name.
  * @method string getEmail Gets email.
  */
-class Partner extends ValueObject
+class SecretAgent extends ValueObject
 {
      protected function getRules()
      {
@@ -48,30 +48,60 @@ which return validation rules for properties of your value object.
 <br>These rules - Symfony validators! So you have all power of Symfony validation in your VO!
 <br>List of all validation rules (constraints) available [here](http://symfony.com/doc/current/validation.html#basic-constraints).
 
-Somewhere in another place you can use your VO in next way:
+Now you can create new instance of VO:
 
 ````php
-<?php
+$secretAgent = new VO\SecretAgent(['name' => 'Bond', 'email' => 'james.bond@mi6.com']);
+// Now you can use magic methods and get values from your VO.
+$secretAgentName = $secretAgent->getName();
+$secretAgentEmail = $secretAgent->getEmail();
+// Also you can pass this VO as parameter
+$controller->doSomethingWithSecretAgent($secretAgent);
+````
 
-Namespace Domain\Model\SomeDomainModel;
+In case of invalid data - you'll receive exception with information about all violated rules:
 
-use VO\Partner;
+````php
+use VO\SecretAgent;
 use ValueObject\Exception\ValidationException;
 
 try {
-
-    $partner = new Partner(['name' => 'Bond', 'email' => 'error']);
-
-    // Now you can use magic methods and get values from your VO.
-    $partnerName = $partner->getName();
-    $partnerEmail = $partner->getEmail();
-
+    $secretAgent = new SecretAgent(['name' => 'Bond', 'email' => 'error']);
 } catch (ValidationException $e) {
-
-    // Here you can obtain your VO validation errors. 
     $errors = $e->getMessages();
-
 }
 ````
 
-More interesting example available [here](https://github.com/cn007b/vo/blob/master/tests/Unit/Stub/SimpleValueObject.php).
+As result your code will be super simple, just like that:
+
+````php
+class SecretAgentController
+{
+    public function indexAction($postData)
+    {
+        (new SecretAgentService())->doSomethingWithSecretAgent(
+            new VO\SecretAgent($postData)
+        );
+    }
+}
+
+class SecretAgentService
+{
+    public function doSomethingWithSecretAgent(VO\SecretAgent $secretAgent)
+    {
+        (new SecretAgentModel())->update($secretAgent);
+    }
+}
+
+class SecretAgentModel
+{
+    public function update(VO\SecretAgent $secretAgent)
+    {
+        $secretAgentName = $secretAgent->getName();
+        $secretAgentEmail = $secretAgent->getEmail();
+        // Update model.
+    }
+}
+````
+
+Example with custom validation rules available [here](https://github.com/cn007b/vo/blob/master/tests/Unit/Stub/SimpleValueObject.php).
