@@ -9,6 +9,10 @@ ValueObject
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/f9ae75a5-f16a-4ce9-a194-8df1460ed4f7/mini.png)](https://insight.sensiolabs.com/projects/f9ae75a5-f16a-4ce9-a194-8df1460ed4f7)
 [![Packagist](https://img.shields.io/packagist/dt/kint/vo.svg)](https://packagist.org/packages/kint/vo)
 
+Value Object (VO) - it's container for your parameters, which knows only about your *parameters* (how to set/get them) and about *validation rules* (what type of data allowed for certain parameter). You are not allowed to create VO with invalid parameters (exception will be thrown) - it provides you opportunity to be sure that your VO is **always valid**. Also, VO is **immutable** - hence you're on save side and no one will modify your VO since it created!
+
+And the main benefits: now you can use this VO everywhere and you don't have to worry about validation, you don't have to mix your business logic with validation code on every application layer (controller, service, model, etc), also you can use it as `type-hint` hence your code will be more clear, interface oriented and more precise.
+
 #### Install
 
 Via composer: `composer require kint/vo`.
