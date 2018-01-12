@@ -7,6 +7,7 @@ ValueObject
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/085e3fe2470c42968f478d8041f3c176)](https://www.codacy.com/app/cn007b/vo?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cn007b/vo&amp;utm_campaign=Badge_Grade)
 [![Maintainability](https://api.codeclimate.com/v1/badges/54f702945d4cab68cca0/maintainability)](https://codeclimate.com/github/cn007b/vo/maintainability)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/f9ae75a5-f16a-4ce9-a194-8df1460ed4f7/mini.png)](https://insight.sensiolabs.com/projects/f9ae75a5-f16a-4ce9-a194-8df1460ed4f7)
+[![Packagist](https://img.shields.io/packagist/dt/kint/vo.svg)](https://packagist.org/packages/kint/vo)
 
 #### Install
 
