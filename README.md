@@ -79,9 +79,7 @@ class SecretAgentController
 {
     public function indexAction($postData)
     {
-        (new SecretAgentService())->doSomethingWithSecretAgent(
-            new VO\SecretAgent($postData)
-        );
+        (new SecretAgentService())->doSomethingWithSecretAgent(new VO\SecretAgent($postData));
     }
 }
 
