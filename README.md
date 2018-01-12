@@ -77,7 +77,7 @@ As result your code will be super simple, just like that:
 ````php
 class SecretAgentController
 {
-    public function indexAction($postData)
+    public function indexAction(array $postData)
     {
         (new SecretAgentService())->doSomethingWithSecretAgent(new VO\SecretAgent($postData));
     }
