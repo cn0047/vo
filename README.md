@@ -9,9 +9,16 @@ ValueObject
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/f9ae75a5-f16a-4ce9-a194-8df1460ed4f7/mini.png)](https://insight.sensiolabs.com/projects/f9ae75a5-f16a-4ce9-a194-8df1460ed4f7)
 [![Packagist](https://img.shields.io/packagist/dt/kint/vo.svg)](https://packagist.org/packages/kint/vo)
 
-Value Object (VO) - it's container for your parameters, which knows only about your *parameters* (how to set/get them) and about *validation rules* (what type of data allowed for certain parameter). You are not allowed to create VO with invalid parameters (exception will be thrown) - it provides you opportunity to be sure that your VO is **always valid**. Also, VO is **immutable** - hence you're on save side and no one will modify your VO since it created!
+Value Object (VO) - it's container for your parameters,
+which knows only about your *parameters* (how to set/get them)
+and about *validation rules* (what type of data allowed for certain parameter).
+You are not allowed to create VO with invalid parameters (exception will be thrown)
+- it provides you opportunity to be sure that your VO is **always valid**.
+Also, VO is **immutable** - hence you're on safe side and no one will modify your VO since it created!
 
-And the main benefits: now you can use this VO everywhere and you don't have to worry about validation, you don't have to mix your business logic with validation code on every application layer (controller, service, model, etc), also you can use it as `type-hint` hence your code will be more clear, interface oriented and more precise.
+Main benefits: now you can use this VO everywhere and you don't have to worry about validation,
+you don't have to mix your business logic with validation code on every application layer (controller, service, model, etc),
+also you can use it as `type-hint` hence your code will be more clear, interface oriented and more precise.
 
 #### Install
 
@@ -44,7 +51,7 @@ class SecretAgent extends ValueObject
 }
 ````
 `getRules` - required method,
-which return validation rules for properties of your value object.
+which returns validation rules for properties of your value object.
 <br>These rules - Symfony validators! So you have all power of Symfony validation in your VO!
 <br>List of all validation rules (constraints) available [here](http://symfony.com/doc/current/validation.html#basic-constraints).
 
@@ -104,4 +111,5 @@ class SecretAgentModel
 
 ENJOY! 🙂 
 
-Example with custom validation rules available [here](https://github.com/cn007b/vo/blob/master/tests/Unit/Stub/SimpleValueObject.php).
+Example with custom validation rules and post-validation behavior available
+[here](https://github.com/cn007b/vo/blob/master/tests/Unit/Stub/SimpleValueObject.php).
