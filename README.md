@@ -12,8 +12,8 @@ ValueObject
 Value Object (VO) - it's container for your parameters,
 which knows only about your *parameters* (how to set/get them)
 and about *validation rules* (what type of data allowed for certain parameter).
-You are not allowed to create VO with invalid parameters (exception will be thrown)
-- it provides you opportunity to be sure that your VO is **always valid**.
+You are not allowed to create VO with invalid parameters (exception will be thrown) -
+it provides you opportunity to be sure that your VO is **always valid**.
 Also, VO is **immutable** - hence you're on safe side and no one will modify your VO since it created!
 
 Main benefits: now you can use this VO everywhere and you don't have to worry about validation,
