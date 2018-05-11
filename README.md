@@ -115,9 +115,13 @@ ENJOY! 🙂
 Example with custom validation rules and post-validation behavior available
 [here](https://github.com/cn007b/vo/blob/master/tests/Unit/Stub/SimpleValueObject.php).
 
+#### Optional parameters and default values
+
+Optional parameters and default values are out of value object's scope and you have to assign default value to optional parameter before creating value object.
+
 #### Value Object vs Form
 
 Value Object looks bit similar to Form, but the key difference - is that
 you can't rely on form everywhere because form may be valid or invalid at any point of time
 and you have always to check `$form->isValid();`
-but with Value Object you 100% sure it's always valid, hence you can loosely use it everywhere!!!
+but with Value Object you **100% sure** it's always valid, hence you can loosely use it everywhere!!!
