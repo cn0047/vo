@@ -10,7 +10,7 @@ ValueObject
 [![Packagist](https://img.shields.io/packagist/dt/kint/vo.svg)](https://packagist.org/packages/kint/vo)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-Value Object (VO) - it's container for your parameters,
+Value Object (VO) - it's immutable container for your parameters,
 which knows only about your *parameters* (how to set/get them)
 and about *validation rules* (what type of data allowed for certain parameter).
 You are not allowed to create VO with invalid parameters (exception will be thrown) -
